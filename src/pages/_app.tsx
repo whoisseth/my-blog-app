@@ -10,7 +10,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const { userRole } = userRoleStore();
   const router = useRouter();
   useEffect(() => {
-    if (!userRole) {
+    if (!userRole.role) {
       // Redirect to user roles page if role is not set
       router.push("/user-roles");
     }

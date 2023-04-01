@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/router";
 import { userRoleStore } from "@/store/userStore";
+import { users } from "@/store/userStore";
 
 const UserRolesPage = () => {
   const { userRole } = userRoleStore();
@@ -9,7 +10,7 @@ const UserRolesPage = () => {
   const router = useRouter();
 
   const handleSubmit = () => {
-    if (userRole !== "") {
+    if (userRole.role !== "") {
       // Redirect to home page
       router.push("/");
     }
@@ -24,11 +25,12 @@ const UserRolesPage = () => {
               Select your user role
             </h2>
           </div>
+          {/* <p> {JSON.stringify(userRole)}</p> */}
           <div className="mt-6">
             <div className="space-y-4">
-              <RadioInput role="admin" />
-              <RadioInput role="author" />
-              <RadioInput role="reader" />
+              {users.map(({ userName, role }, index) => (
+                <RadioInput key={index} {...{ role, userName }} />
+              ))}
             </div>
           </div>
           <div className="mt-6">
@@ -50,34 +52,34 @@ export default UserRolesPage;
 
 interface RadioInputType {
   role: string;
+  userName: string;
 }
 
-function RadioInput({ role }: RadioInputType) {
+function RadioInput({ role, userName }: RadioInputType) {
   const { userRole, setUserRole } = userRoleStore();
 
   const handleRoleSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUserRole(event.target.value);
+    setUserRole({ userName: userName, role: event.target.value });
   };
 
   return (
-    <div className="">
+    <div className=" flex items-center h-10  gap-2">
+      <input
+        checked={userRole.role === role && userRole.userName === userName}
+        type="radio"
+        id={userName + role}
+        name="role"
+        value={role}
+        onChange={handleRoleSelect}
+        className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 cursor-pointer"
+      />
+
       <label
-        htmlFor="admin"
+        htmlFor={userName + role}
         className="cursor-pointer block text-sm font-medium text-gray-700 capitalize"
       >
-        {role}
+        <span>{userName}</span> <span>-</span> <span>{role}</span>
       </label>
-      <div className="mt-1">
-        <input
-          checked={userRole === role}
-          type="radio"
-          id={role}
-          name="role"
-          value={role}
-          onChange={handleRoleSelect}
-          className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 cursor-pointer"
-        />
-      </div>
     </div>
   );
 }

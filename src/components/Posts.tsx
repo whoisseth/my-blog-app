@@ -41,7 +41,7 @@ const Posts: React.FC<Props> = ({ posts }) => {
         <div key={post.id} className="mb-4 border rounded p-2">
           <h2 className="text-2xl font-bold">{post.title}</h2>
           <p className="text-gray-700">{post.content.substring(0, 100)}...</p>
-          {userRole === "admin" || userRole === "author"  && (
+          {userRole.role === ("admin" || "author") && (
             <div className="mt-2">
               <button
                 className="px-4 py-2 bg-blue-500 text-white rounded-md mr-2"

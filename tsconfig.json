@@ -18,6 +18,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/store/userStore.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/store/userStore.tsx"],
   "exclude": ["node_modules"]
 }
