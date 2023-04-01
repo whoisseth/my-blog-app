@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { PostInterface } from "@/data/post";
 import { userRoleStore } from "@/store/userStore";
+import Link from "next/link";
 
 interface Props {
   posts: PostInterface[];
@@ -38,26 +39,28 @@ const Posts: React.FC<Props> = ({ posts }) => {
     <div>
       <h1 className="text-4xl font-bold mb-4">Blog Posts</h1>
       {currentPosts.map((post) => (
-        <div key={post.id} className="mb-4 border rounded p-2">
-          <h2 className="text-2xl font-bold">{post.title}</h2>
-          <p className="text-gray-700">{post.content.substring(0, 100)}...</p>
-          {userRole.role === ("admin" || "author") && (
-            <div className="mt-2">
-              <button
-                className="px-4 py-2 bg-blue-500 text-white rounded-md mr-2"
-                onClick={() => handleEdit}
-              >
-                Edit
-              </button>
-              <button
-                className="px-4 py-2 bg-red-500 text-white rounded-md"
-                onClick={() => handleDelete}
-              >
-                Delete
-              </button>
-            </div>
-          )}
-        </div>
+        <Link href={`/blog/${post.id}`} key={post.id}>
+          <div className="mb-4 border rounded p-2">
+            <h2 className="text-2xl font-bold">{post.title}</h2>
+            <p className="text-gray-700">{post.content.substring(0, 100)}...</p>
+            {userRole.role === ("admin" || "author") && (
+              <div className="mt-2">
+                <button
+                  className="px-4 py-2 bg-blue-500 text-white rounded-md mr-2"
+                  onClick={() => handleEdit}
+                >
+                  Edit
+                </button>
+                <button
+                  className="px-4 py-2 bg-red-500 text-white rounded-md"
+                  onClick={() => handleDelete}
+                >
+                  Delete
+                </button>
+              </div>
+            )}
+          </div>
+        </Link>
       ))}
       <Pagination
         currentPage={currentPage}
