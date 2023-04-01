@@ -1,12 +1,59 @@
 /** @format */
 
+import { UserInterface } from "@/store/userStore";
+
 export interface PostInterface {
   id: string;
   title: string;
   content: string;
+  previewImage: string | null;
+  author: {
+    userName: string;
+    role: "author" | "admin";
+  };
+  comments?: {
+    user: UserInterface;
+    comment: string;
+  }[];
 }
 
 export const posts: PostInterface[] = [
+  {
+    id: "1",
+    title: "My first blog post",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis auctor, felis vel tempus malesuada, risus elit pharetra enim, ut euismod nulla nisl in lectus.",
+    previewImage: "",
+    author: {
+      userName: "Rajesh Singh",
+      role: "admin"
+    }
+  },
+  {
+    id: "2",
+    title: "My second blog post",
+    previewImage: "",
+    author: {
+      userName: "Rajesh Singh",
+      role: "admin"
+    },
+    content:
+      "Suspendisse potenti. Praesent euismod congue ex, vel ullamcorper nulla accumsan ut. In dapibus ante eu ex consequat, vel mollis est imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam feugiat sodales ex a pharetra."
+  },
+  {
+    id: "3",
+    title: "My third blog post",
+    previewImage: "",
+    content:
+      "Curabitur eget interdum enim. Integer euismod magna ac urna imperdiet, vitae fermentum ex sagittis. Nam tristique urna in lorem suscipit, vel venenatis sapien ultrices. Integer id leo vel odio vulputate commodo non ac dolor.",
+    author: {
+      userName: "Kavya Sharma",
+      role: "author"
+    }
+  }
+];
+
+export const posts2 = [
   {
     id: "1",
     title: "My first blog post",

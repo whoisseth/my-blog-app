@@ -1,15 +1,17 @@
 /** @format */
 
 import React from "react";
-import { posts } from "@/data/post";
+
 import Posts from "@/components/Posts";
 import Link from "next/link";
 import clsx from "clsx";
 import { RiAddLine } from "react-icons/ri";
 import Layout from "@/components/Layout";
+import { postStore } from "./../store/postsStore";
 type Props = {};
 
 export default function Home({}: Props) {
+  const { posts } = postStore();
   return (
     <Layout>
       <CreatePostButton className="mb-4" />

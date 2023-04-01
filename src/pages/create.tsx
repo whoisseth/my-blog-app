@@ -4,6 +4,8 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import Layout from "@/components/Layout";
+import { postStore } from "./../store/postsStore";
+
 const CreatePostPage = dynamic(() => import("@/components/CreatePostPage"), {
   loading: () => <p>Loading...</p>
 });
