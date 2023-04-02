@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 interface CreatePostPageProps {
-  image: File | null;
+  // image: File | null;
   handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   title: string;
   handleTitleChange: React.ChangeEventHandler<HTMLInputElement> | undefined;
@@ -26,8 +26,8 @@ const CreatePost: React.FC<CreatePostPageProps> = ({
   handleTitleChange,
   content,
   handleContentChange,
-  handleImageChange,
-  image
+  handleImageChange
+  // image
 }) => {
   const router = useRouter();
 
@@ -88,7 +88,7 @@ const CreatePost: React.FC<CreatePostPageProps> = ({
                 onChange={handleImageChange}
                 className="mt-1 block w-fit cursor-pointer "
               />
-              {image && image.name}
+              {/* {image && image.name} */}
               {/* <img src={previewImage} alt="uplod img" /> */}
             </div>
             <div>

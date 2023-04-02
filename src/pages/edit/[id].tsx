@@ -9,11 +9,6 @@ import { postStore } from "@/store/postsStore";
 // import dynamic from "next/dynamic";
 import CreatePost from "@/components/CreatePost";
 
-// const EditPostComponent = dynamic(() => import("@/components/CreatePost"), {
-//   loading: () => <p>Loading...</p>import { CreatePostPage } from '@/components/CreatePostPage';
-
-// });
-
 export default function EditPost() {
   const { setPosts, posts } = postStore();
   const router = useRouter();
@@ -24,11 +19,14 @@ export default function EditPost() {
 
   const { userRole } = userRoleStore();
 
-  const [title, setTitle] = useState(post.title);
-  const [content, setContent] = useState(post.content);
-  const [image, setImage] = useState<File | null>(post.image || null);
+  // const [title, setTitle] = useState<string>("");
+  const [title, setTitle] = useState<string>(post?.title || "");
+  // const [content, setContent] = useState<string>("");
+  const [content, setContent] = useState<string>(post?.content || "");
+  // const [image, setImage] = useState<File>(post?.image);
+  // const [image, setImage] = useState<File>();
   const [previewImage, setPreviewImage] = useState<string | null>(
-    post.previewImage || null
+    post?.previewImage
   );
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,7 +41,7 @@ export default function EditPost() {
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
       const selectedImage = event.target.files[0];
-      setImage(selectedImage);
+      // setImage(selectedImage);
 
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -51,7 +49,7 @@ export default function EditPost() {
       };
       reader.readAsDataURL(selectedImage);
     } else {
-      setImage(null);
+      // setImage(null);
       setPreviewImage(null);
     }
   };
@@ -66,7 +64,7 @@ export default function EditPost() {
           title: title,
           content: content,
           previewImage: previewImage,
-          image: image,
+          // image: image,
           author: {
             userName: userRole.userName,
             role: userRole.role
@@ -87,7 +85,7 @@ export default function EditPost() {
           {...{
             title,
             content,
-            image,
+            // image,
             handleSubmit,
             handleTitleChange,
             handleContentChange,

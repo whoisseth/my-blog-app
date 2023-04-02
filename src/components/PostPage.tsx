@@ -42,7 +42,7 @@ const PostPage: React.FC<PostPageProps> = ({
           title: title,
           content: content,
           previewImage: post.previewImage,
-          image: post.image,
+          // image: post.image,
           author: post.author,
           comments: [
             ...(post.comments ?? []),

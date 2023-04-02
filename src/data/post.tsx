@@ -12,13 +12,13 @@ export interface PostInterface {
   id: string;
   title: string;
   content: string;
-  previewImage: string | null;
+  previewImage: string;
   author: {
     userName: string;
     role: "author" | "admin";
   };
   comments?: commentInterface[];
-  image?: File | null;
+  // image?: File;
 }
 
 export const posts: PostInterface[] = [
