@@ -23,7 +23,7 @@ export default function SinglePost({}) {
         <Layout>
           <PostPage
             post={post}
-            previewImage={post.previewImage}
+            previewImage={post.previewImage }
             // postId={post.id}
             title={post?.title}
             author={post?.author.userName}

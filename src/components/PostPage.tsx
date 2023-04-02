@@ -15,7 +15,7 @@ interface PostPageProps {
   author: string;
   content: string;
   comments?: commentInterface[];
-  previewImage: string;
+  previewImage: string | null;
 }
 
 const PostPage: React.FC<PostPageProps> = ({
@@ -93,7 +93,12 @@ const PostPage: React.FC<PostPageProps> = ({
       <p className="mb-4">{ReactHtmlParser(content)}</p>
       {previewImage && (
         <section className="relative w-full h-40">
-          <Image  className=" object-contain" fill src={previewImage} alt="banner img" />
+          <Image
+            className=" object-contain"
+            fill
+            src={previewImage}
+            alt="banner img"
+          />
         </section>
       )}
 
