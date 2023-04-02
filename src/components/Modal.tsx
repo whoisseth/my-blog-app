@@ -5,6 +5,7 @@ import { RiCloseCircleLine } from "react-icons/ri";
 import { useEffect } from "react";
 import { useRef } from "react";
 import { useState } from "react";
+import useOnclickOutside from "react-cool-onclickoutside";
 
 type Props = {
   showModal: boolean;
@@ -27,6 +28,10 @@ export default function Modal({
   mt,
   titleRight
 }: Props) {
+  const ref = useOnclickOutside(() => {
+    closeModal();
+  });
+
   const heightRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState<any>(0);
 
@@ -62,13 +67,13 @@ export default function Modal({
         )}
       >
         <div
+          ref={ref}
           className="p-6  flex  "
           style={{ marginTop: height > 700 ? mt : 0 }}
         >
           {/*content start*/}
           <div
             ref={heightRef}
-            // ref={ref}
             className={clsx(
               " min-h-[100px]  bg-gray-100 rounded-lg  px-4 py-4 shadow font-normal  ",
               className
