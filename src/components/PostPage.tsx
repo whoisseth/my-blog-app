@@ -6,6 +6,7 @@ import { UserInterface, userRoleStore } from "@/store/userStore";
 import React, { useState } from "react";
 import ReactHtmlParser from "react-html-parser";
 import { commentInterface } from "./../data/post";
+import Image from "next/image";
 
 interface PostPageProps {
   post: PostInterface;
@@ -14,6 +15,7 @@ interface PostPageProps {
   author: string;
   content: string;
   comments?: commentInterface[];
+  previewImage: string;
 }
 
 const PostPage: React.FC<PostPageProps> = ({
@@ -21,7 +23,8 @@ const PostPage: React.FC<PostPageProps> = ({
   content,
   comments,
   author,
-  post
+  post,
+  previewImage
 }) => {
   const { setPosts, posts } = postStore();
   const { userRole } = userRoleStore();
@@ -60,22 +63,22 @@ const PostPage: React.FC<PostPageProps> = ({
 
     // Code to handle comment submission goes here
   };
-  const handleDelete = (
-    c: commentInterface,
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    e.preventDefault();
-    console.log("post.author", post.author);
+  // const handleDelete = (
+  //   c: commentInterface,
+  //   e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  // ) => {
+  //   e.preventDefault();
+  //   console.log("post.author", post.author);
 
-    const editedPost = {
-      ...post,
-      comments: post.comments.filter((postC) => postC !== c)
-    };
-    setPosts([editedPost]);
-    setNewComment("");
+  //   const editedPost = {
+  //     ...post,
+  //     comments: post.comments.filter((postC) => postC !== c)
+  //   };
+  //   setPosts([editedPost]);
+  //   setNewComment("");
 
-    // Code to handle comment submission goes here
-  };
+  //   // Code to handle comment submission goes here
+  // };
 
   // console.log("posts", posts);
   console.log("post", post);
@@ -88,13 +91,19 @@ const PostPage: React.FC<PostPageProps> = ({
         <p className="text-gray-500"> - {author}</p>
       </section>
       <p className="mb-4">{ReactHtmlParser(content)}</p>
+      {previewImage && (
+        <section className="relative w-full h-40">
+          <Image  className=" object-contain" fill src={previewImage} alt="banner img" />
+        </section>
+      )}
+
       <hr className="my-8" />
       <h2 className="text-2xl font-bold mb-4">Comments</h2>
       {comments?.map((c, index) => (
         <div key={index} className="mb-4">
           <div className="flex justify-between pr-10">
             <p className="mb-2">💬 {c.comment}</p>
-            <button onClick={(e) => handleDelete(c, e)}>💣</button>
+            {/* <button onClick={(e) => handleDelete(c, e)}>💣</button> */}
           </div>
           <p className="text-sm text-gray-500 pl-8">
             Posted by {c.user?.userName}
