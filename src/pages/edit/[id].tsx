@@ -1,16 +1,18 @@
 /** @format */
 
 import { useRouter } from "next/router";
-
 import React, { useState } from "react";
-import { posts } from "@/data/post";
 import Layout from "@/components/Layout";
 import NotFound from "@/components/NotFound";
 import { userRoleStore } from "@/store/userStore";
-import CreatePostPage from "@/components/CreatePostPage";
 import { postStore } from "@/store/postsStore";
+import dynamic from "next/dynamic";
 
-export default function EditPost({}) {
+const CreatePostPage = dynamic(() => import("@/components/CreatePostPage"), {
+  loading: () => <p>Loading...</p>
+});
+
+export default function EditPost() {
   const { setPosts, posts } = postStore();
   const router = useRouter();
   console.log("router.pathname", router.pathname);
@@ -80,8 +82,6 @@ export default function EditPost({}) {
     <Layout>
       {post?.id === id && !(userRole.role === "reader") ? (
         <CreatePostPage
-          // title={post.title}
-          // content={post.content}
           {...{
             title,
             content,
