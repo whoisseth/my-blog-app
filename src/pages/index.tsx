@@ -8,13 +8,17 @@ import clsx from "clsx";
 import { RiAddLine } from "react-icons/ri";
 import Layout from "@/components/Layout";
 import { postStore } from "./../store/postsStore";
+import { userRoleStore } from "@/store/userStore";
 type Props = {};
 
 export default function Home({}: Props) {
+  const { userRole } = userRoleStore();
   const { posts } = postStore();
+  console.log("posts-", posts);
+
   return (
     <Layout>
-      <CreatePostButton className="mb-4" />
+      {!(userRole.role === "reader") && <CreatePostButton className="mb-4" />}
       <Posts posts={posts} />
     </Layout>
   );

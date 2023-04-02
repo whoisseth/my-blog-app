@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Navbar from "@/components/Navbar";
 
 type Props = {
   children: React.ReactNode;
@@ -10,8 +11,9 @@ type Props = {
 export default function Layout({ children }: Props) {
   return (
     <>
+      <Navbar />
       <div className="p-4">
-        <section className="flex justify-between mb-6">
+        {/* <section className="flex justify-between mb-6">
           <Link
             href="/"
             className="px-6 py-2  text-white center bg-blue-500 hover:bg-blue-700 rounded-md 
@@ -26,7 +28,7 @@ export default function Layout({ children }: Props) {
           >
             Select Role
           </Link>
-        </section>
+        </section> */}
         {children}
       </div>
     </>

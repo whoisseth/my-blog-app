@@ -5,7 +5,7 @@ import { persist } from "zustand/middleware";
 
 export interface UserInterface {
   userName: string;
-  role: string;
+  role: "author" | "admin" | "reader" | "";
 }
 
 interface UserRoleState {

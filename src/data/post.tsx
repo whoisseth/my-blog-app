@@ -15,6 +15,7 @@ export interface PostInterface {
     user: UserInterface;
     comment: string;
   }[];
+  image?: File | null;
 }
 
 export const posts: PostInterface[] = [
@@ -34,8 +35,8 @@ export const posts: PostInterface[] = [
     title: "My second blog post",
     previewImage: "",
     author: {
-      userName: "Rajesh Singh",
-      role: "admin"
+      userName: "Arjun Gupta",
+      role: "author"
     },
     content:
       "Suspendisse potenti. Praesent euismod congue ex, vel ullamcorper nulla accumsan ut. In dapibus ante eu ex consequat, vel mollis est imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam feugiat sodales ex a pharetra."
