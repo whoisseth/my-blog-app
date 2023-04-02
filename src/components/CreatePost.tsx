@@ -2,11 +2,13 @@
 
 import { userRoleStore } from "@/store/userStore";
 import React, { DOMAttributes, InputHTMLAttributes, useState } from "react";
+import dynamic from "next/dynamic";
 // import Quill from "react-quill";
-import ReactQuill from "react-quill";
+// import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import NotFound from "./NotFound";
 import { useRouter } from "next/router";
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 interface CreatePostPageProps {
   image: File | null;

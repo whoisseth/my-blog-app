@@ -5,12 +5,7 @@ import React from "react";
 import Layout from "@/components/Layout";
 import NotFound from "@/components/NotFound";
 import { postStore } from "@/store/postsStore";
-import dynamic from "next/dynamic";
-// import PostPage from "@/components/PostPage";
-
-const PostPage = dynamic(() => import("@/components/PostPage"), {
-  loading: () => <p>Loading...</p>
-});
+import PostPage from "@/components/PostPage";
 
 export default function SinglePost({}) {
   const { posts } = postStore();
