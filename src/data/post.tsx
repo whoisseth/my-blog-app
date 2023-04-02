@@ -38,7 +38,7 @@ export const posts: PostInterface[] = [
       {
         id: "1",
         user: { role: "reader", userName: "Nisha Verma " },
-        comment: "This is a comment by Nisha Verma"
+        comment: "This is a comment two"
       }
     ]
   },
@@ -54,7 +54,7 @@ export const posts: PostInterface[] = [
       {
         id: "1",
         user: { role: "reader", userName: "Nisha Verma " },
-        comment: "This is a comment by Nisha Verma"
+        comment: "This is a comment Three"
       }
     ],
 
