@@ -2,7 +2,8 @@
 
 import { userRoleStore } from "@/store/userStore";
 import React, { DOMAttributes, InputHTMLAttributes, useState } from "react";
-import Quill from "react-quill";
+// import Quill from "react-quill";
+import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import NotFound from "./NotFound";
 import { useRouter } from "next/router";
@@ -63,7 +64,8 @@ const CreatePost: React.FC<CreatePostPageProps> = ({
               >
                 Content
               </label>
-              <Quill
+              {/* <Quill */}
+              <ReactQuill
                 value={content}
                 onChange={handleContentChange}
                 className="mt-1 shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
