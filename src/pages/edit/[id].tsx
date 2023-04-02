@@ -7,7 +7,14 @@ import NotFound from "@/components/NotFound";
 import { userRoleStore } from "@/store/userStore";
 import { postStore } from "@/store/postsStore";
 // import dynamic from "next/dynamic";
-import CreatePost from "@/components/CreatePost";
+// import CreatePost from "@/components/CreatePost";
+
+import dynamic from "next/dynamic";
+// import PostPage from "@/components/PostPage";
+
+const CreatePost = dynamic(() => import("@/components/CreatePost"), {
+  loading: () => <p>Loading...</p>
+});
 
 // const EditPostComponent = dynamic(() => import("@/components/CreatePost"), {
 //   loading: () => <p>Loading...</p>import { CreatePostPage } from '@/components/CreatePostPage';

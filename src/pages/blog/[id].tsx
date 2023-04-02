@@ -5,7 +5,12 @@ import React from "react";
 import Layout from "@/components/Layout";
 import NotFound from "@/components/NotFound";
 import { postStore } from "@/store/postsStore";
-import PostPage from "@/components/PostPage";
+import dynamic from "next/dynamic";
+// import PostPage from "@/components/PostPage";
+
+const PostPage = dynamic(() => import("@/components/PostPage"), {
+  loading: () => <p>Loading...</p>
+});
 
 export default function SinglePost({}) {
   const { posts } = postStore();
@@ -23,7 +28,7 @@ export default function SinglePost({}) {
         <Layout>
           <PostPage
             post={post}
-            previewImage={post.previewImage }
+            previewImage={post.previewImage}
             // postId={post.id}
             title={post?.title}
             author={post?.author.userName}
