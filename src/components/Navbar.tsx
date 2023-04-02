@@ -18,11 +18,11 @@ const Navbar = () => {
             </Link>
           </div>
           <section className="flex gap-2">
-            <div className="hidden md:block">
+            <div className="">
               <div className="flex items-center">
                 <Link
                   href="/"
-                  className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className="hidden md:block  text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Home
                 </Link>

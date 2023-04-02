@@ -85,7 +85,6 @@ export default function Create() {
               handleImageChange
             }}
           />
-          <p>create page</p>
         </Layout>
       ) : (
         <NotFound />

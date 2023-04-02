@@ -18,7 +18,7 @@ export default function Home({}: Props) {
 
   return (
     <Layout>
-      {!(userRole.role === "reader") && <CreatePostButton className="mb-4" />}
+      {userRole.role && <CreatePostButton className="mb-4" />}
       <Posts posts={posts} />
     </Layout>
   );
