@@ -3,6 +3,7 @@
 import { userRoleStore } from "@/store/userStore";
 import Link from "next/link";
 import React from "react";
+import UserRoles from "./UserRoles";
 
 const Navbar = () => {
   const { userRole } = userRoleStore();
@@ -25,12 +26,7 @@ const Navbar = () => {
                 >
                   Home
                 </Link>
-                <Link
-                  href="/user-roles"
-                  className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Select Role
-                </Link>
+                <UserRoles btnClassName="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium" />
               </div>
             </div>
             <div className="flex flex-col text-blue-300 text-sm ">

@@ -17,7 +17,7 @@ type Props = {
   titleRight?: string;
 };
 
-export default function Modal2({
+export default function Modal({
   showModal,
   closeModal,
   className,
@@ -70,7 +70,7 @@ export default function Modal2({
             ref={heightRef}
             // ref={ref}
             className={clsx(
-              " min-h-[100px]  bg-white rounded-lg  px-9 py-[18px] shadow font-normal  ",
+              " min-h-[100px]  bg-gray-100 rounded-lg  px-4 py-4 shadow font-normal  ",
               className
             )}
           >
