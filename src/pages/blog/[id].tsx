@@ -5,7 +5,7 @@ import React from "react";
 import Layout from "@/components/Layout";
 import NotFound from "@/components/NotFound";
 import { postStore } from "@/store/postsStore";
-import ReactHtmlParser from "react-html-parser";
+import PostPage from "@/components/PostPage";
 
 export default function SinglePost({}) {
   const { posts } = postStore();
@@ -14,15 +14,21 @@ export default function SinglePost({}) {
   const id = router.query.id as string;
 
   const data = posts.filter((d) => d.id === id);
+  const post = data[0];
   // console.log("posts-", posts);
 
   return (
     <>
       {data[0]?.id == id ? (
         <Layout>
-          <p>id - {data[0]?.id} </p>
-          <p>author - {data[0]?.author.userName} </p>
-          <p> content - {ReactHtmlParser(data[0]?.content)} </p>
+          <PostPage
+            post={post}
+            // postId={post.id}
+            title={post?.title}
+            author={post?.author.userName}
+            content={post?.content}
+            comments={post?.comments}
+          />
         </Layout>
       ) : (
         <NotFound />

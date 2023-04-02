@@ -2,6 +2,12 @@
 
 import { UserInterface } from "@/store/userStore";
 
+export interface commentInterface {
+  id: string | number;
+  user: UserInterface;
+  comment: string;
+}
+
 export interface PostInterface {
   id: string;
   title: string;
@@ -11,10 +17,7 @@ export interface PostInterface {
     userName: string;
     role: "author" | "admin";
   };
-  comments?: {
-    user: UserInterface;
-    comment: string;
-  }[];
+  comments?: commentInterface[];
   image?: File | null;
 }
 
@@ -25,10 +28,19 @@ export const posts: PostInterface[] = [
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis auctor, felis vel tempus malesuada, risus elit pharetra enim, ut euismod nulla nisl in lectus.",
     previewImage: "",
+
     author: {
       userName: "Rajesh Singh",
       role: "admin"
-    }
+    },
+
+    comments: [
+      {
+        id: "1",
+        user: { role: "reader", userName: "Nisha Verma " },
+        comment: "This is a comment by Nisha Verma"
+      }
+    ]
   },
   {
     id: "2",
@@ -38,6 +50,14 @@ export const posts: PostInterface[] = [
       userName: "Arjun Gupta",
       role: "author"
     },
+    comments: [
+      {
+        id: "1",
+        user: { role: "reader", userName: "Nisha Verma " },
+        comment: "This is a comment by Nisha Verma"
+      }
+    ],
+
     content:
       "Suspendisse potenti. Praesent euismod congue ex, vel ullamcorper nulla accumsan ut. In dapibus ante eu ex consequat, vel mollis est imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam feugiat sodales ex a pharetra."
   },
@@ -45,6 +65,13 @@ export const posts: PostInterface[] = [
     id: "3",
     title: "My third blog post",
     previewImage: "",
+    comments: [
+      {
+        id: 1,
+        user: { role: "reader", userName: "Nisha Verma " },
+        comment: "This is a comment by Nisha Verma"
+      }
+    ],
     content:
       "Curabitur eget interdum enim. Integer euismod magna ac urna imperdiet, vitae fermentum ex sagittis. Nam tristique urna in lorem suscipit, vel venenatis sapien ultrices. Integer id leo vel odio vulputate commodo non ac dolor.",
     author: {
