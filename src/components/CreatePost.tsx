@@ -17,7 +17,7 @@ interface CreatePostPageProps {
   handleImageChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const CreatePostPage: React.FC<CreatePostPageProps> = ({
+const CreatePost: React.FC<CreatePostPageProps> = ({
   handleSubmit,
   title,
   handleTitleChange,
@@ -105,4 +105,4 @@ const CreatePostPage: React.FC<CreatePostPageProps> = ({
   );
 };
 
-export default CreatePostPage;
+export default CreatePost;

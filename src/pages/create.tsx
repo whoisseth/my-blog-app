@@ -1,20 +1,19 @@
 /** @format */
 
 import React, { useState } from "react";
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 import Layout from "@/components/Layout";
 import { useRouter } from "next/router";
 import { userRoleStore } from "@/store/userStore";
 import NotFound from "@/components/NotFound";
 import { postStore } from "@/store/postsStore";
+import CreatePost from "@/components/CreatePost";
 
-const CreatePostPage = dynamic(() => import("@/components/CreatePostPage"), {
-  loading: () => <p>Loading...</p>
-});
+// const CreatePost = dynamic(() => import("@/components/CreatePost"), {
+//   loading: () => <p>Loading...</p>
+// });
 
-interface Props {}
-
-export default function Create({}: Props) {
+export default function Create() {
   const { setPosts, posts } = postStore();
   const { userRole } = userRoleStore();
 
@@ -75,7 +74,7 @@ export default function Create({}: Props) {
     <>
       {!(userRole.role === "reader") ? (
         <Layout>
-          <CreatePostPage
+          <CreatePost
             {...{
               handleSubmit,
               title,
@@ -86,6 +85,7 @@ export default function Create({}: Props) {
               handleImageChange
             }}
           />
+          <p>create page</p>
         </Layout>
       ) : (
         <NotFound />

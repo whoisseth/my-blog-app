@@ -6,11 +6,13 @@ import Layout from "@/components/Layout";
 import NotFound from "@/components/NotFound";
 import { userRoleStore } from "@/store/userStore";
 import { postStore } from "@/store/postsStore";
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
+import CreatePost from "@/components/CreatePost";
 
-const CreatePostPage = dynamic(() => import("@/components/CreatePostPage"), {
-  loading: () => <p>Loading...</p>
-});
+// const EditPostComponent = dynamic(() => import("@/components/CreatePost"), {
+//   loading: () => <p>Loading...</p>import { CreatePostPage } from '@/components/CreatePostPage';
+
+// });
 
 export default function EditPost() {
   const { setPosts, posts } = postStore();
@@ -81,7 +83,7 @@ export default function EditPost() {
   return (
     <Layout>
       {post?.id === id && !(userRole.role === "reader") ? (
-        <CreatePostPage
+        <CreatePost
           {...{
             title,
             content,
