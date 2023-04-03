@@ -18,7 +18,9 @@ export default function Home({}: Props) {
 
   return (
     <Layout>
-      {userRole.role && <CreatePostButton className="mb-4" />}
+      {(userRole.role == "admin" || userRole.role == "author") && (
+        <CreatePostButton className="mb-4" />
+      )}
       <Posts posts={posts} />
     </Layout>
   );
